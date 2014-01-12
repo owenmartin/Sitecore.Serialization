@@ -1,0 +1,1 @@
+Add Sitecore.Kernel.dll to this folder
