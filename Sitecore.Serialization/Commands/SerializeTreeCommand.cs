@@ -1,30 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Sitecore.Collections;
+﻿using Sitecore.Collections;
 using Sitecore.Data.Items;
 using Sitecore.Pipelines;
 using Sitecore.Serialization.Args;
+using Sitecore.Shell.Applications.Dialogs.ProgressBoxes;
 using Sitecore.Shell.Framework.Commands;
 
 namespace Sitecore.Serialization.Commands
 {
-    public class SerializeTreeCommand :Command
+    public class SerializeTreeCommand : Command
     {
         public override void Execute(CommandContext context)
         {
-            foreach (var item in context.Items)
+            ProgressBox.Execute("ItemSync", "Serializa Item", "business/16x16/data_disk.png",
+                this.Serialize, new object[1]
+                {
+                    context.Items
+                });
+
+        }
+
+        private void Serialize(params object[] items)
+        {
+            foreach (Item item in (Item[])items[0])
             {
                 SerializeItemAndChildren(item);
             }
-            
         }
 
         private void SerializeItemAndChildren(Item item)
         {
-            CorePipeline.Run("Serialization", new StandardSerializationArgs() {Item = item});
+            CorePipeline.Run("Serialization", new StandardSerializationArgs() { Item = item });
             foreach (Item child in item.GetChildren(ChildListOptions.SkipSorting))
             {
                 SerializeItemAndChildren(child);

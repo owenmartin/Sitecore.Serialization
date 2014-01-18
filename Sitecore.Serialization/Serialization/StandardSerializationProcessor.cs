@@ -4,7 +4,7 @@ using Sitecore.Serialization.Args;
 
 namespace Sitecore.Serialization
 {
-    public class StandardSerializationProcessor : ISerializationProcessor
+    public class StandardSerializationProcessor
     {
         public void Process(SerializationArgs args)
         {

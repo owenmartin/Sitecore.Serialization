@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Sitecore.Data.Items;
 using Sitecore.Pipelines;
 using Sitecore.Serialization.Args;
+using Sitecore.Shell.Applications.Dialogs.ProgressBoxes;
 using Sitecore.Shell.Framework.Commands;
 
 namespace Sitecore.Serialization.Commands
@@ -13,7 +10,16 @@ namespace Sitecore.Serialization.Commands
     {
         public override void Execute(CommandContext context)
         {
-            CorePipeline.Run("Serialization", new StandardSerializationArgs() {Item = context.Items.First()});
+            ProgressBox.Execute("ItemSync", "Serializa Item", "business/16x16/data_disk.png",
+                Serialize, new object[]
+                {
+                    context.Items[0]
+                });
+        }
+
+        private void Serialize(params object[] item)
+        {
+            CorePipeline.Run("Serialization", new StandardSerializationArgs { Item = (Item)item[0] });
         }
     }
 }

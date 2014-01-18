@@ -7,11 +7,12 @@ using Sitecore.Serialization.Args;
 
 namespace Sitecore.Serialization.Deserialization
 {
-    public class LocationProcessor : IDeserializationProcessor
+    public class LocationProcessor
     {
         public void Process(DeserializationArgs args)
         {
-         
+            if (!string.IsNullOrEmpty(args.ItemPath))
+                return;
             var folder = Configuration.Settings.SerializationFolder;
             var database = args.Item.Database.Name;
             args.ItemPath = string.Format("{0}/{1}/{2}", folder, database, GetPath(args.Item));

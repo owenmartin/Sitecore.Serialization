@@ -6,7 +6,7 @@ using Sitecore.Serialization.Args;
 
 namespace Sitecore.Serialization
 {
-    public class LocationProcessor : ISerializationProcessor
+    public class LocationProcessor
     {
         public void Process(SerializationArgs args)
         {

@@ -45,15 +45,15 @@
   <ItemGroup>
     <Compile Include="Args\DeserializationArgs.cs" />
     <Compile Include="Args\StandardSerializationArgs.cs" />
+    <Compile Include="Commands\DeserializeDatabaseCommand.cs" />
     <Compile Include="Commands\DeserializeItemCommand.cs" />
     <Compile Include="Commands\SerializeItemCommand.cs" />
     <Compile Include="Commands\DeserializeTreeCommand.cs" />
     <Compile Include="Commands\SerializeTreeCommand.cs" />
     <Compile Include="Deserialization\DeserializationProcessor.cs" />
-    <Compile Include="Deserialization\IDeserializationProcessor.cs" />
     <Compile Include="Deserialization\LocationProcessor.cs" />
+    <Compile Include="SerializationBase.cs" />
     <Compile Include="Serialization\LocationProcessor.cs" />
-    <Compile Include="Serialization\ISerializationProcessor.cs" />
     <Compile Include="Args\SerializationArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serialization\StandardSerializationProcessor.cs" />
