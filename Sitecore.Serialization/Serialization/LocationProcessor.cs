@@ -4,11 +4,11 @@ using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
 using Sitecore.Serialization.Args;
 
-namespace Sitecore.Serialization
+namespace Sitecore.Serialization.Serialization
 {
     public class LocationProcessor
     {
-        public void Process(SerializationArgs args)
+        public virtual void Process(SerializationArgs args)
         {
             var folder = Configuration.Settings.SerializationFolder;
             var database = args.Item.Database.Name;

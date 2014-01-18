@@ -9,7 +9,7 @@ namespace Sitecore.Serialization.Deserialization
 {
     public class LocationProcessor
     {
-        public void Process(DeserializationArgs args)
+        public virtual void Process(DeserializationArgs args)
         {
             if (!string.IsNullOrEmpty(args.ItemPath))
                 return;

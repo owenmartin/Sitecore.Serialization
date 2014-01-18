@@ -2,7 +2,7 @@
 using System.IO;
 using Sitecore.Serialization.Args;
 
-namespace Sitecore.Serialization
+namespace Sitecore.Serialization.Serialization
 {
     class StandardSerializationWriter : SerializationBase
     {

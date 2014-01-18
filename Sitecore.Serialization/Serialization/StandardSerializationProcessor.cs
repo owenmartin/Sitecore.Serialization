@@ -1,8 +1,7 @@
 ﻿using System;
-using Sitecore.Data.Serialization;
 using Sitecore.Serialization.Args;
 
-namespace Sitecore.Serialization
+namespace Sitecore.Serialization.Serialization
 {
     public class StandardSerializationProcessor
     {
@@ -10,7 +9,7 @@ namespace Sitecore.Serialization
         {
             if (args.GetType() != typeof(StandardSerializationArgs))
                 throw new ArgumentException("args should be of type StandardSerializationArgs", "args");
-            ((StandardSerializationArgs)args).SyncItem = ItemSynchronization.BuildSyncItem(args.Item);
+            ((StandardSerializationArgs)args).SyncItem = Sitecore.Data.Serialization.ItemSynchronization.BuildSyncItem(args.Item);
         }
     }
 }

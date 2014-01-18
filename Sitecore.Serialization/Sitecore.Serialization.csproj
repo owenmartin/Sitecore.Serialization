@@ -30,11 +30,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\lib\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Sitecore.Kernel">
       <HintPath>..\lib\Sitecore.Kernel.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,20 +49,39 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Args\DeserializationArgs.cs" />
+    <Compile Include="Args\JsonSerializationArgs.cs" />
     <Compile Include="Args\StandardSerializationArgs.cs" />
     <Compile Include="Commands\DeserializeDatabaseCommand.cs" />
     <Compile Include="Commands\DeserializeItemCommand.cs" />
+    <Compile Include="Commands\Json\DeserializeDatabaseCommand.cs" />
+    <Compile Include="Commands\Json\DeserializeItemCommand.cs" />
+    <Compile Include="Commands\Json\DeserializeTreeCommand.cs" />
+    <Compile Include="Commands\Json\SerializeItemCommand.cs" />
+    <Compile Include="Commands\Json\SerializeTreeCommand.cs" />
     <Compile Include="Commands\SerializeItemCommand.cs" />
     <Compile Include="Commands\DeserializeTreeCommand.cs" />
     <Compile Include="Commands\SerializeTreeCommand.cs" />
+    <Compile Include="Data\SerializedField.cs" />
+    <Compile Include="Data\SerializedItem.cs" />
+    <Compile Include="Data\ValuesDictionary.cs" />
     <Compile Include="Deserialization\DeserializationProcessor.cs" />
     <Compile Include="Deserialization\LocationProcessor.cs" />
+    <Compile Include="JsonDeserialization\JsonDeserializationProcessor.cs" />
+    <Compile Include="ItemSynchronization.cs" />
+    <Compile Include="JsonDeserialization\LocationProcessor.cs" />
+    <Compile Include="JsonSerialization\JsonSerializationProcessor.cs" />
+    <Compile Include="JsonSerialization\JsonSerializationWriter.cs" />
+    <Compile Include="JsonSerialization\LocationProcessor.cs" />
     <Compile Include="SerializationBase.cs" />
     <Compile Include="Serialization\LocationProcessor.cs" />
     <Compile Include="Args\SerializationArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serialization\StandardSerializationProcessor.cs" />
     <Compile Include="Serialization\StandardSerializationWriter.cs" />
+    <Compile Include="Data\SerializedVersion.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Better.Serialization.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

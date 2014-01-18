@@ -1,0 +1,27 @@
+<!--
+
+This file will add the relevant pipelines for serialization and alter the commands for the sitecore UI
+
+-->
+<configuration xmlns:patch="http://www.sitecore.net/xmlconfig/">
+  <sitecore>
+    <pipelines>
+      <Serialization>
+        <processor type="Sitecore.Serialization.Serialization.LocationProcessor, Sitecore.Serialization" />
+        <processor type="Sitecore.Serialization.Serialization.StandardSerializationProcessor, Sitecore.Serialization" />
+        <processor type="Sitecore.Serialization.Serialization.StandardSerializationWriter, Sitecore.Serialization" />
+      </Serialization>
+      <Deserialization>
+        <processor type="Sitecore.Serialization.Deserialization.LocationProcessor, Sitecore.Serialization"/>
+        <processor type="Sitecore.Serialization.Deserialization.DeserializationProcessor, Sitecore.Serialization"/>
+      </Deserialization>
+    </pipelines>
+
+    <commands>
+      <command patch:instead="*[@name='itemsync:dumpitem']" name="itemsync:dumpitem" type="Sitecore.Serialization.Commands.SerializeItemCommand,Sitecore.Serialization"></command>
+      <command patch:instead="*[@name='itemsync:dumptree']" name="itemsync:dumptree" type="Sitecore.Serialization.Commands.SerializeTreeCommand,Sitecore.Serialization"></command>
+      <command patch:instead="*[@name='itemsync:loaditem']" name="itemsync:loaditem" type="Sitecore.Serialization.Commands.DeserializeItemCommand,Sitecore.Serialization"></command>
+      <command patch:instead="*[@name='itemsync:loadtree']" name="itemsync:loadtree" type="Sitecore.Serialization.Commands.DeserializeTreeCommand,Sitecore.Serialization"></command>
+    </commands>
+  </sitecore>
+</configuration>
